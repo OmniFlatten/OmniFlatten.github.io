@@ -36,18 +36,43 @@
   <link href="css/style.css" rel="stylesheet">
 
   <style>
-    .card.user {
-      background-color: #f0f8ff;
-      /* light blue */
+    .dialogue-btn {
+      width: auto;
+      padding: 10px;
+      border: 2px solid #cccccc;
+      /* Light grey border */
+      color: black;
+      /* Black text color */
+      cursor: pointer;
+      border-radius: 20px;
+      margin: 5px;
+      display: inline-block;
     }
 
-    .card.assistant {
+    .user-btn {
+      background-color: #f0f8ff;
+      /* Light blue background for user */
+      margin-left: 20px;
+    }
+
+    .assistant-btn {
       background-color: #f8f8ff;
-      /* ghost white */
-      text-align: right;
+      /* Lighter blue background for assistant */
+      margin-right: 20px;
+    }
+
+    .d-flex.user {
+      justify-content: flex-start;
+    }
+
+    .d-flex.assistant {
+      justify-content: flex-end;
+    }
+
+    .audio-control {
+      width: 100%;
     }
   </style>
-
   <!-- =======================================================
     Theme Name: Reveal
     Theme URL: https://bootstrapmade.com/reveal-bootstrap-corporate-template/
@@ -114,7 +139,13 @@
       <div class="container">
         <div class="section-header">
           <h2>Model Overview</h2>
-          <p>We provide <b>OmniFlatten</b>, a groundbreaking model designed for full-duplex conversation, which effectively mirrors the complexity and dynamics of natural human dialogue. This model leverages a novel multi-stage post-training scheme to adapt a large text-based language model into an integrated speech-text dialogue system that operates in real time. Through progressive fine-tuning, OmniFlatten aligns speech and text modalities without altering the core architecture, ensuring low latency and seamless interactions. This approach paves the way for developing more efficient and natural end-to-end full-duplex spoken dialogue systems.</p>
+          <p>We provide <b>OmniFlatten</b>, a groundbreaking model designed for full-duplex conversation, which
+            effectively mirrors the complexity and dynamics of natural human dialogue. This model leverages a novel
+            multi-stage post-training scheme to adapt a large text-based language model into an integrated speech-text
+            dialogue system that operates in real time. Through progressive fine-tuning, OmniFlatten aligns speech and
+            text modalities without altering the core architecture, ensuring low latency and seamless interactions. This
+            approach paves the way for developing more efficient and natural end-to-end full-duplex spoken dialogue
+            systems.</p>
         </div>
 
         <div class="row">
@@ -153,13 +184,12 @@
       <div class="container">
         <div class="section-header">
           <h2>Experiments</h2>
-          <p></p>
+          <p>We use a progressive learning approach for model training, adopting Speech-Text Alignment, 4-streaming training, 3-streaming training, and 2-streaming training.</p>
         </div>
         <div class="row">
           <div class="col-lg-12 content">
-            <h2>4-Streaming Training</h2>
+            <h3>4-Streaming Training</h3>
             <h4></h4>
-
             <!-- <ul>
               <li><i class="ion-android-checkmark-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.
               </li>
@@ -175,7 +205,7 @@
             </div>
           </div>
         </div>
-
+      <p></p>
       </div>
     </section><!-- #about -->
 
@@ -186,7 +216,7 @@
       <div class="container">
         <div class="section-header">
           <h2>Cases</h2>
-          <p></p>
+          <p>We will show you some cases:</p>
         </div>
 
         <div class="container mt-4">
@@ -199,73 +229,104 @@
               <button class="nav-link" id="case2-tab" data-bs-toggle="tab" data-bs-target="#case2" type="button"
                 role="tab" aria-controls="case2" aria-selected="false">Case 2</button>
             </li>
-            <!-- Add more tabs as needed -->
           </ul>
           <div class="tab-content" id="myTabContent">
+            <h6></h6>
             <div class="tab-pane fade show active" id="case1" role="tabpanel" aria-labelledby="case1-tab">
-              <!-- Dialogue for Case 1 -->
-              <div class="card user mt-3">
-                <div class="card-body">
-                  <h5 class="card-title"><i class="bi-person-circle"></i> User</h5>
-                  <p class="card-text">Hello! Can you help me with my problem?</p>
-                  <audio controls>
-                    <source src="path_to_user_audio_case1.mp3" type="audio/mpeg">
-                    Your browser does not support the audio tag.
-                  </audio>
-                </div>
+              <audio id="audioCase1" class="audio-control" controls>
+                <source src="audios/case1.mp3" type="audio/mpeg">
+                Your browser does not support the audio tag.
+              </audio>
+              <div class="d-flex user">
+                <button class="dialogue-btn user-btn" onclick="seekAudio('audioCase1', 0.0)">User: Create a budget for
+                  purchasing new
+                  equipment for the office.</button>
               </div>
-              <div class="card assistant mt-3">
-                <div class="card-body">
-                  <h5 class="card-title"><i class="bi-robot"></i> Assistant</h5>
-                  <p class="card-text">Sure, I'd be happy to help!</p>
-                  <audio controls>
-                    <source src="path_to_assistant_audio_case1.mp3" type="audio/mpeg">
-                    Your browser does not support the audio tag.
-                  </audio>
-                </div>
+              <div class="d-flex assistant">
+                <button class="dialogue-btn assistant-btn" onclick="seekAudio('audioCase1', 3.9)">Assistant: Certainly!
+                  I can help you
+                  create a budget for your upcoming business meeting. A budget is an important step in the process as it
+                  helps you keep track of the tasks that need to be completed and the cost of the meeting. I can create
+                  a budget based on the details you specify such as the date, time, location, and number of attendees.
+                  Once the budget is created, i can help you stick to it and ensure that you stay within the
+                  budget.</button>
               </div>
-              <div class="audio-center">
-                <h5>Listen to the Combined Conversation</h5>
-                <audio controls>
-                  <source src="path_to_combined_audio_case1.mp3" type="audio/mpeg">
-                  Your browser does not support the audio tag.
-                </audio>
+              <div class="d-flex user">
+                <button class="dialogue-btn user-btn" onclick="seekAudio('audioCase1', 38.1)">User: What kind of
+                  financial planning
+                  tools can i use?</button>
+              </div>
+              <div class="d-flex assistant">
+                <button class="dialogue-btn assistant-btn" onclick="seekAudio('audioCase1', 41.8)">Assistant: There are
+                  many financial
+                  planning tools available that can help you manage your finances, such as financial advisors, budgeting
+                  apps, and financial software. Each of these tools offers different features and can be used in
+                  different ways to help you manage your finances effectively.</button>
+              </div>
+              <div class="d-flex user">
+                <button class="dialogue-btn user-btn" onclick="seekAudio('audioCase1', 63.6)">User: What is the best way
+                  to track my
+                  spending?</button>
+              </div>
+              <div class="d-flex assistant">
+                <button class="dialogue-btn assistant-btn" onclick="seekAudio('audioCase1', 70.6)">Assistant: The best
+                  way to track
+                  your spending is to create a budget and set up a budgeting system. This will help you keep track of
+                  your expenses, plan for the future, and save money. You should also set up goals and track your
+                  spending to ensure that you're staying within your budget. Additionally, using an app to track your
+                  spending in realtime can be a great tool to help you stay on top of your finances.</button>
               </div>
             </div>
             <div class="tab-pane fade" id="case2" role="tabpanel" aria-labelledby="case2-tab">
-              <!-- Dialogue for Case 2 -->
-              <div class="card user mt-3">
-                <div class="card-body">
-                  <h5 class="card-title"><i class="bi-person-circle"></i> User</h5>
-                  <p class="card-text">Hello! Can you help me with my problem?</p>
-                  <audio controls>
-                    <source src="path_to_user_audio_case2.mp3" type="audio/mpeg">
-                    Your browser does not support the audio tag.
-                  </audio>
-                </div>
+              <audio id="audioCase2" class="audio-control" controls>
+                <source src="audios/case2.mp3" type="audio/mpeg">
+                Your browser does not support the audio tag.
+              </audio>
+              <div class="d-flex user">
+                <button class="dialogue-btn user-btn" onclick="seekAudio('audioCase2', 0.0)">User: Research potential
+                  marketing channels and come up with creative ideas to reach target audiences.</button>
               </div>
-              <div class="card assistant mt-3">
-                <div class="card-body">
-                  <h5 class="card-title"><i class="bi-robot"></i> Assistant</h5>
-                  <p class="card-text">Sure, I'd be happy to help!</p>
-                  <audio controls>
-                    <source src="path_to_assistant_audio_case2.mp3" type="audio/mpeg">
-                    Your browser does not support the audio tag.
-                  </audio>
-                </div>
+              <div class="d-flex assistant">
+                <button class="dialogue-btn assistant-btn" onclick="seekAudio('audioCase2', 6.5)">Assistant: Sure, i can
+                  help you with that. You can start by doing a market analysis to identify potential customers and their
+                  needs. You can also use customer surveys to gain insights into customer preferences. Once you have
+                  identified the potential target markets, you can research them further to determine their
+                  characteristics. You can also look into existing customer data and use it to create a comprehensive
+                  analysis.</button>
               </div>
-              <div class="audio-center">
-                <h5>Listen to the Combined Conversation</h5>
-                <audio controls>
-                  <source src="path_to_combined_audio_case2.mp3" type="audio/mpeg">
-                  Your browser does not support the audio tag.
-                </audio>
+              <div class="d-flex user">
+                <button class="dialogue-btn user-btn" onclick="seekAudio('audioCase2', 33.9)">User: What do you think of
+                  our current social media strategy? </button>
+              </div>
+              <div class="d-flex assistant">
+                <button class="dialogue-btn assistant-btn" onclick="seekAudio('audioCase2', 43.0)">Assistant: The
+                  current social media strategy is effective in increasing brand awareness and customer engagement.
+                  However, it may not be able to effectively reach the target audience who use it. As such, you should
+                  look into other options such as running targeted ads, creating a content calendar, and engaging with
+                  customers directly in order to maximize your reach.</button>
+              </div>
+              <div class="d-flex user">
+                <button class="dialogue-btn user-btn" onclick="seekAudio('audioCase2', 57.1)">User: How can we make our
+                  website more userfriendly? </button>
+              </div>
+              <div class="d-flex user">
+                <button class="dialogue-btn user-btn" onclick="seekAudio('audioCase2', 86.5)">User: Can you suggest any
+                  creative ideas to increase website traffic? </button>
+              </div>
+              <div class="d-flex assistant">
+                <button class="dialogue-btn assistant-btn" onclick="seekAudio('audioCase2', 90.2)">Assistant: Sure, some
+                  creative ideas could include running targeted ads on social media, creating content that resonates
+                  with your target audience, and leveraging influencers or influencers to reach a larger audience. You
+                  could also look into creating an exclusive content series that would be tailored to your target
+                  audience.</button>
               </div>
             </div>
-            <!-- Add more cases as needed -->
           </div>
         </div>
-        <p></p>
+        <!-- Add more cases as needed -->
+      </div>
+      </div>
+      <p></p>
       </div>
     </section><!-- #services -->
 
@@ -342,6 +403,16 @@
 
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
+  <script>
+    function seekAudio(audioId, time) {
+      var audio = document.getElementById(audioId);
+      var wasPlaying = !audio.paused;
+      audio.currentTime = time;
+      if (wasPlaying) {
+        audio.play();
+      }
+    }
+  </script>
 
 </body>
 
