@@ -184,7 +184,8 @@
       <div class="container">
         <div class="section-header">
           <h2>Experiments</h2>
-          <p>We use a progressive learning approach for model training, adopting Speech-Text Alignment, 4-streaming training, 3-streaming training, and 2-streaming training.</p>
+          <p>We use a progressive learning approach for model training, adopting Speech-Text Alignment, 4-streaming
+            training, 3-streaming training, and 2-streaming training.</p>
         </div>
         <div class="row">
           <div class="col-lg-12 content">
@@ -205,7 +206,7 @@
             </div>
           </div>
         </div>
-      <p></p>
+        <p></p>
       </div>
     </section><!-- #about -->
 
@@ -228,6 +229,18 @@
             <li class="nav-item" role="presentation">
               <button class="nav-link" id="case2-tab" data-bs-toggle="tab" data-bs-target="#case2" type="button"
                 role="tab" aria-controls="case2" aria-selected="false">Case 2</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="case3-tab" data-bs-toggle="tab" data-bs-target="#case3" type="button"
+                role="tab" aria-controls="case3" aria-selected="false">Case 3</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="case4-tab" data-bs-toggle="tab" data-bs-target="#case4" type="button"
+                role="tab" aria-controls="case4" aria-selected="false">Case 4</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="case5-tab" data-bs-toggle="tab" data-bs-target="#case5" type="button"
+                role="tab" aria-controls="case5" aria-selected="false">Case 5</button>
             </li>
           </ul>
           <div class="tab-content" id="myTabContent">
@@ -321,6 +334,98 @@
                   audience.</button>
               </div>
             </div>
+            <div class="tab-pane fade" id="case3" role="tabpanel" aria-labelledby="case3-tab">
+              <audio id="audioCase3" class="audio-control" controls>
+                <source src="audios/case3.mp3" type="audio/mpeg">
+                Your browser does not support the audio tag.
+              </audio>
+              <div class="d-flex user">
+                <button class="dialogue-btn user-btn" onclick="seekAudio('audioCase3', 0.0)">User: 生成一个有关夏天的诗歌。</button>
+              </div>
+              <div class="d-flex assistant">
+                <button class="dialogue-btn assistant-btn" onclick="seekAudio('audioCase3', 2.4)">Assistant:
+                  在二月的夏天，阳光普照，大地一片金黄，白云悠悠，风儿轻轻吹。蝉鸣声嘹亮，草木芬芳，凉风习习，夏天真是美好的季节。</button>
+              </div>
+              <div class="d-flex user">
+                <button class="dialogue-btn user-btn" onclick="seekAudio('audioCase3', 15.9)">User: 你能帮我想一个创意吗？
+                </button>
+              </div>
+              <div class="d-flex assistant">
+                <button class="dialogue-btn assistant-btn" onclick="seekAudio('audioCase3', 18.0)">Assistant:
+                  当然可以，请问您需要创意的领域是什么？</button>
+              </div>
+              <div class="d-flex user">
+                <button class="dialogue-btn user-btn" onclick="seekAudio('audioCase3', 21.9)">User:
+                  能为我想一个市场营销的广告创意吗？</button>
+              </div>
+              <div class="d-flex assistant">
+                <button class="dialogue-btn assistant-btn" onclick="seekAudio('audioCase3', 26.0)">Assistant:
+                  好的，如果您正在寻找一个市场营销广告创意，我会推荐与环保相关的主题，例如推广可循环使用的包装材料，以及电动汽车的推广等。</button>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="case4" role="tabpanel" aria-labelledby="case4-tab">
+              <audio id="audioCase4" class="audio-control" controls>
+                <source src="audios/case4.mp3" type="audio/mpeg">
+                Your browser does not support the audio tag.
+              </audio>
+              <div class="d-flex user">
+                <button class="dialogue-btn user-btn" onclick="seekAudio('audioCase4', 0.0)">User: 生成一些古风诗句吧。 </button>
+              </div>
+              <div class="d-flex assistant">
+                <button class="dialogue-btn assistant-btn" onclick="seekAudio('audioCase4', 2.7)">Assistant:
+                  好的，我可以为您生成一些古风诗句。请问您需要特定主题或是灵感来源吗？</button>
+              </div>
+              <div class="d-flex user">
+                <button class="dialogue-btn user-btn" onclick="seekAudio('audioCase4', 17.8)">User: 给我出一些优秀的公司口号。
+                </button>
+              </div>
+              <div class="d-flex assistant">
+                <button class="dialogue-btn assistant-btn" onclick="seekAudio('audioCase4', 21.2)">Assistant:
+                  好的，以下是几个优秀的公司口号，一。创新是成功的基础。二。追求卓越，勇攀科技巅峰。三。您的成功是得到我们所有人的动力。四。努力创造，实现梦想。希望这些能为您的工作带来一些启示。</button>
+              </div>
+              <div class="d-flex user">
+                <button class="dialogue-btn user-btn" onclick="seekAudio('audioCase4', 37.0)">User:
+                  请给我介绍一下未来十年可能的科技趋势。</button>
+              </div>
+              <div class="d-flex assistant">
+                <button class="dialogue-btn assistant-btn" onclick="seekAudio('audioCase4', 40.8)">Assistant:
+                  未来十年可能出现的科技趋势是人工智能、物联网、区块链、五季技术的快速发展，以及机器学习、自然语言处理、虚拟现实和区块链等技术的广泛应用。这些技术都将深刻影响我们的生活和工作方式。</button>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="case5" role="tabpanel" aria-labelledby="case5-tab">
+              <audio id="audioCase5" class="audio-control" controls>
+                <source src="audios/case5.mp3" type="audio/mpeg">
+                Your browser does not support the audio tag.
+              </audio>
+              <div class="d-flex user">
+                <button class="dialogue-btn user-btn" onclick="seekAudio('audioCase5', 0.0)">User:
+                  请进行一次Generation任务，帮我想出一个好的生日礼物。 </button>
+              </div>
+              <div class="d-flex assistant">
+                <button class="dialogue-btn assistant-btn" onclick="seekAudio('audioCase5', 4.3)">Assistant:
+                  好的，让我们一起来生成一个生日礼物的创意。你可以考虑给你的朋友买一些特别的礼物，比如一本他们一直想要读的书，或是一个他们一直想要的乐器。你也可以考虑为他们预定一次美好而难忘的旅行，或者制作一本由你们俩共同记录和珍贵回忆的相册。</button>
+              </div>
+              <div class="d-flex user">
+                <button class="dialogue-btn user-btn" onclick="seekAudio('audioCase5', 11.9)">User:
+                  这个礼物是给我的女朋友的，我希望它能够表达我的爱意。 </button>
+              </div>
+              <div class="d-flex user">
+                <button class="dialogue-btn user-btn" onclick="seekAudio('audioCase5', 32.7)">User: 好的，这些建议真的很实用，谢谢你！
+                </button>
+              </div>
+              <div class="d-flex assistant">
+                <button class="dialogue-btn assistant-btn" onclick="seekAudio('audioCase5', 36.1)">Assistant:
+                  很高兴能帮到你，希望这些建议能为你和你的朋友带来好运。你觉得这样的生日礼物怎么样？</button>
+              </div>
+              <div class="d-flex user">
+                <button class="dialogue-btn user-btn" onclick="seekAudio('audioCase5', 41.4)">User:
+                  请帮我进行一次Brainstorming任务，我需要为我的公司找到更多的市场推广渠道。</button>
+              </div>
+              <div class="d-flex assistant">
+                <button class="dialogue-btn assistant-btn" onclick="seekAudio('audioCase5', 49.6)">Assistant:
+                  当然，我们可以一起头脑风暴来收集更多的信息。你想要了解哪些方面？比如行业、品牌、最佳渠道等等。</button>
+              </div>
+            </div>
           </div>
         </div>
         <!-- Add more cases as needed -->
@@ -360,7 +465,7 @@
           </div>
         </div>
 
-        </div>
+      </div>
     </section>
 
   </main>
