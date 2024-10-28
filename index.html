@@ -72,6 +72,21 @@
     .audio-control {
       width: 100%;
     }
+
+    /* .table th,
+    .table td {
+      text-align: center;
+      /* Center align all table headers and cells */
+    /* vertical-align: middle; */
+    /* Align vertically in the middle */
+    }
+
+    .centered-table {
+      margin: auto;
+      width: 100%;
+    }
+
+    */
   </style>
   <!-- =======================================================
     Theme Name: Reveal
@@ -191,23 +206,29 @@
           <div class="col-lg-12 content">
             <h3>4-Streaming Training</h3>
             <h4></h4>
-            <!-- <ul>
-              <li><i class="ion-android-checkmark-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </li>
-              <li><i class="ion-android-checkmark-circle"></i> Duis aute irure dolor in reprehenderit in voluptate
-                velit.</li>
-              <li><i class="ion-android-checkmark-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat
-                nulla pariatur.</li>
-            </ul> -->
-
             <div class="col-lg-12">
               <img src="images/gpt-ch4.png" class="img-fluid" alt="">
             </div>
           </div>
-        </div>
-        <p></p>
-      </div>
+          <div class="row">
+            <div class="col-lg-12 content">
+              <h3>3-Streaming Training</h3>
+              <h4></h4>
+              <div class="col-lg-12">
+                <img src="images/gpt-ch3.png" class="img-fluid" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 content">
+              <h3>2-Streaming Training</h3>
+              <h4></h4>
+              <div class="col-lg-12">
+                <img src="images/gpt-ch2.png" class="img-fluid" alt="">
+              </div>
+            </div>
+            <p></p>
+          </div>
     </section><!-- #about -->
 
     <!--==========================
@@ -442,7 +463,144 @@
       <div class="container">
         <div class="section-header">
           <h2>Metrics</h2>
-          <p>Updating...</p>
+          <p></p>
+        </div>
+
+        <div class="container mt-4">
+          <div class="col-lg-8 content">
+            <h3>Speech-Text Alignment</h3>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th colspan="2" class="text-center align-middle">Librispeech (CER)</th>
+                  <th class="text-center align-middle">WenetSpeech (CER)</th>
+                </tr>
+                <tr>
+                  <th class="text-center align-middle">Model</th>
+                  <th class="text-center align-middle">test_clean↓</th>
+                  <th class="text-center align-middle">test_other↓</th>
+                  <th class="text-center align-middle">test_meeting↓</th>
+                </tr>
+              </thead>
+              <tbody class="text-center align-middle">
+                <tr>
+                  <td colspan="4"><strong><em>ASR</em></strong></td>
+                </tr>
+                <tr>
+                  <td><strong>OmniFlatten (Ours)</strong></td>
+                  <td>9.46</td>
+                  <td>22.48</td>
+                  <td>31.76</td>
+                </tr>
+                <tr>
+                  <td>Whisper V3</td>
+                  <td>3.71</td>
+                  <td>5.74</td>
+                  <td>19.91</td>
+                </tr>
+                <tr>
+                  <td colspan="4"><strong><em>TTS</em></strong></td>
+                </tr>
+                <tr>
+                  <td><strong>OmniFlatten (Ours)</strong></td>
+                  <td>10.9</td>
+                  <td>12.87</td>
+                  <td>50.56</td>
+                </tr>
+                <tr>
+                  <td>GT Speech Tokens</td>
+                  <td>5.82</td>
+                  <td>12.74</td>
+                  <td>40.18</td>
+                </tr>
+              </tbody>
+              <caption>ASR and TTS evaluation results on Librispeech and WenetSpeech Datasets. <b>OmniFlatten</b> denotes the
+                speech-text aligned multimodal model after the Modality Alignment training stage. <b>GT Speech Tokens</b> denotes
+                discretizing the ground truth waveforms into speech tokens and detokenizing them into speech.</caption>
+            </table>
+          </div>
+        </div>
+
+        <div class="container mt-4">
+          <div class="col-lg-8 content">
+            <h3>Dialogue Capability</h3>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th class="text-center align-middle">Model</th>
+                  <th class="text-center align-middle">Test Set Loss &darr;</th>
+                  <th class="text-center align-middle">LLM Score &uarr;</th>
+                </tr>
+              </thead>
+              <tbody class="text-center align-middle">
+                <tr>
+                  <td>OmniFlatten</td>
+                  <td><strong>0.8125</strong></td>
+                  <td><strong>5.185258</strong></td>
+                </tr>
+                <tr>
+                  <td>OmniFlatten w/o half-duplex training</td>
+                  <td>0.8129</td>
+                  <td>5.008698</td>
+                </tr>
+                <tr>
+                  <td>OmniFlatten w/o modality alignment and half-duplex training</td>
+                  <td>0.8496</td>
+                  <td>4.346218</td>
+                </tr>
+                <tr>
+                  <td>GT Response</td>
+                  <td>-</td>
+                  <td>7.30685</td>
+                </tr>
+              </tbody>
+            </table>
+            <caption>The impact of Modality Alignment and Half-duplex Dialogue Training on full-duplex dialogue
+              capabilities, measured by scores assigned by a competitive LLM QWen-max. The CE loss on the test set is
+              also reported. <i>GT Response</i> denotes the ground truth textual response in the test set.</caption>
+          </div>
+        </div>
+
+        <div class="container mt-4">
+          <div class="col-lg-8 content">
+            <h3>Turn-Taking Metrics</h3>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+              <thead class="table-header">
+                <tr>
+                  <th class="text-center align-middle">Chunk Size</th>
+                  <th class="text-center align-middle">Assistant Turn-taking Acc@K<br>1/5/10/25 (%)</th>
+                  <th class="text-center align-middle">Average Assistant Turn-taking<br>Response Time (K/ms)</th>
+                  <th class="text-center align-middle">User Turn-taking Acc @K<br>1/5/10/25 (%)</th>
+                  <th class="text-center align-middle">Average User Turn-taking<br>Response Time (K/ms)</th>
+                </tr>
+              </thead>
+              <tbody class="text-center align-middle">
+                <tr>
+                  <td>5</td>
+                  <td>29.2/59.4/67.4/71.9</td>
+                  <td>3.23/129</td>
+                  <td>2.1/5.7/8.1/17.0</td>
+                  <td>20.55/822</td>
+                </tr>
+                <tr>
+                  <td>10</td>
+                  <td>19.8/55.7/71.3/75.5</td>
+                  <td>3.99/160</td>
+                  <td>5.5/13.4/19.8/30.0</td>
+                  <td>20.13/805</td>
+                </tr>
+              </tbody>
+              <caption>Assistant Turn-taking and User Turn-taking accuracy at the k-th token (Acc@K) and Efficiency (Response
+                Time) with different speech chunk sizes in OmniFlatten.</caption>
+            </table>
+          </div>
         </div>
 
       </div>
@@ -483,28 +641,16 @@
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
-  <!-- JavaScript Libraries -->
-  <!-- <script src="lib/jquery/jquery.min.js"></script> -->
-  <!-- <script src="lib/jquery/jquery-migrate.min.js"></script> -->
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.3.2/jquery-migrate.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-  <!-- <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script> -->
-  <!-- <script src="lib/easing/easing.min.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/superfish/1.7.10/js/hoverIntent.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/superfish/1.7.10/js/superfish.min.js"></script>
-  <!-- <script src="lib/superfish/hoverIntent.js"></script> -->
-  <!-- <script src="lib/superfish/superfish.min.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-  <!-- <script src="lib/wow/wow.min.js"></script> -->
-  <!-- <script src="lib/owlcarousel/owl.carousel.min.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-  <!-- <script src="lib/magnific-popup/magnific-popup.min.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-  <!-- <script src="lib/sticky/sticky.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sticky/1.0.4/jquery.sticky.min.js"></script>
-  <!-- Contact Form JavaScript File -->
-  <!-- <script src="contactform/contactform.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- Template Main Javascript File -->
