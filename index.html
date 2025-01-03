@@ -466,54 +466,88 @@
           </div>
           <div class="table-responsive">
             <table class="table table-striped table-bordered">
+              <caption>ASR results on Librispeech and Wenetspeech test datasets. For Librispeech, we report the WER
+                metric. For Wenetspeech, we report the CER metric.</caption>
               <thead>
                 <tr>
-                  <th></th>
-                  <th colspan="2" class="text-center align-middle">Librispeech (CER)</th>
-                  <th class="text-center align-middle">WenetSpeech (CER)</th>
+                  <th>Model</th>
+                  <th colspan="2" class="text-center align-middle">Librispeech</th>
+                  <th colspan="2" class="text-center align-middle">Wenetspeech</th>
                 </tr>
                 <tr>
-                  <th class="text-center align-middle">Model</th>
-                  <th class="text-center align-middle">test_clean↓</th>
-                  <th class="text-center align-middle">test_other↓</th>
-                  <th class="text-center align-middle">test_meeting↓</th>
+                  <th class="text-center align-middle"></th>
+                  <th class="text-center align-middle">test-clean</th>
+                  <th class="text-center align-middle">test-other</th>
+                  <th class="text-center align-middle">test-meeting</th>
+                  <th class="text-center align-middle">test-net</th>
                 </tr>
               </thead>
               <tbody class="text-center align-middle">
                 <tr>
-                  <td colspan="4"><strong><em>ASR</em></strong></td>
+                  <td>Whisper-S</td>
+                  <td>3.13</td>
+                  <td>7.37</td>
+                  <td>25.62</td>
+                  <td>16.66</td>
                 </tr>
                 <tr>
-                  <td><strong>OmniFlatten (Ours)</strong></td>
-                  <td>9.46</td>
-                  <td>22.48</td>
-                  <td>31.76</td>
+                  <td>Whisper-L</td>
+                  <td>1.82</td>
+                  <td>3.5</td>
+                  <td>18.87</td>
+                  <td>10.48</td>
                 </tr>
                 <tr>
-                  <td>Whisper V3</td>
-                  <td>3.71</td>
-                  <td>5.74</td>
-                  <td>19.91</td>
+                  <td>VITA</td>
+                  <td>8.14</td>
+                  <td>18.4</td>
+                  <td>12.15</td>
+                  <td>16.53</td>
                 </tr>
                 <tr>
-                  <td colspan="4"><strong><em>TTS</em></strong></td>
-                </tr>
-                <tr>
-                  <td><strong>OmniFlatten (Ours)</strong></td>
-                  <td>10.9</td>
-                  <td>12.87</td>
-                  <td>50.56</td>
-                </tr>
-                <tr>
-                  <td>GT Speech Tokens</td>
-                  <td>5.82</td>
-                  <td>12.74</td>
-                  <td>40.18</td>
+                  <td>OmniFlatten</td>
+                  <td>7.91</td>
+                  <td>19.21</td>
+                  <td>26.1</td>
+                  <td>19.0</td>
                 </tr>
               </tbody>
-              <caption>ASR and TTS evaluation results on Librispeech and WenetSpeech Datasets. <b>OmniFlatten</b> denotes the
-                speech-text aligned multimodal model after the Modality Alignment training stage. <b>GT Speech Tokens</b> denotes
-                discretizing the ground truth waveforms into speech tokens and detokenizing them into speech.</caption>
+            </table>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+              <caption>TTS results on LibriTTS and AIShell-3. For LibriTTS, we utilize whisper-large-v3 model to perform
+                recognition on TTS outputs and assess the WER metric. For AIShell-3, we deploy the paraformer-zh model
+                to recognize TTS results and evaluate CER metric.</caption>
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th class="text-center align-middle">LibriTTS (WER)</th>
+                  <th class="text-center align-middle">AIShell-3 (CER)</th>
+                </tr>
+              </thead>
+              <tbody class="text-center align-middle">
+                <tr>
+                  <td>Original</td>
+                  <td>2.66</td>
+                  <td>2.52</td>
+                </tr>
+                <tr>
+                  <td>ChatTTS</td>
+                  <td>8.32</td>
+                  <td>3.87</td>
+                </tr>
+                <tr>
+                  <td>CosyVoice</td>
+                  <td>2.89</td>
+                  <td>3.82</td>
+                </tr>
+                <tr>
+                  <td>OmniFlatten</td>
+                  <td>4.51</td>
+                  <td>4.46</td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
@@ -523,40 +557,106 @@
             <h3>Dialogue Capability</h3>
           </div>
           <div class="table-responsive">
-            <table class="table table-bordered">
+            <table class="table table-striped table-bordered">
+              <caption>Performance results of speech and text chat capabilities in both Chinese and English test
+                datasets.</caption>
               <thead>
                 <tr>
-                  <th class="text-center align-middle">Model</th>
-                  <th class="text-center align-middle">Test Set Loss &darr;</th>
-                  <th class="text-center align-middle">LLM Score &uarr;</th>
+                  <th rowspan="2">Model</th>
+                  <th rowspan="2">Params</th>
+                  <th colspan="2" class="text-center align-middle">English</th>
+                  <th colspan="2" class="text-center align-middle">Chinese</th>
+                </tr>
+                <tr>
+                  <th class="text-center align-middle">Score (Text)</th>
+                  <th class="text-center align-middle">Score (Speech + ASR)</th>
+                  <th class="text-center align-middle">Score (Text)</th>
+                  <th class="text-center align-middle">Score (Speech + ASR)</th>
                 </tr>
               </thead>
               <tbody class="text-center align-middle">
                 <tr>
-                  <td>OmniFlatten</td>
-                  <td><strong>0.8125</strong></td>
-                  <td><strong>5.185258</strong></td>
-                </tr>
-                <tr>
-                  <td>OmniFlatten w/o half-duplex training</td>
-                  <td>0.8129</td>
-                  <td>5.008698</td>
-                </tr>
-                <tr>
-                  <td>OmniFlatten w/o modality alignment and half-duplex training</td>
-                  <td>0.8496</td>
-                  <td>4.346218</td>
-                </tr>
-                <tr>
-                  <td>GT Response</td>
+                  <td>Qwen2-0.5B-Instruct</td>
+                  <td>0.5B</td>
+                  <td>6.75</td>
                   <td>-</td>
-                  <td>7.30685</td>
+                  <td>6.98</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>Qwen2-7B-Instruct</td>
+                  <td>7B</td>
+                  <td>8.37</td>
+                  <td>-</td>
+                  <td>8.09</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>LLaMA-Omni</td>
+                  <td>8B</td>
+                  <td>6.01</td>
+                  <td>5.50</td>
+                  <td>4.17</td>
+                  <td>3.89</td>
+                </tr>
+                <tr>
+                  <td>Moshi</td>
+                  <td>7B</td>
+                  <td>3.92</td>
+                  <td>3.46</td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>GLM-Voice</td>
+                  <td>9B</td>
+                  <td>6.97</td>
+                  <td>6.40</td>
+                  <td>7.02</td>
+                  <td>6.69</td>
+                </tr>
+                <tr>
+                  <td>OmniFlatten directly 3-stream</td>
+                  <td>0.5B</td>
+                  <td>2.99</td>
+                  <td>2.59</td>
+                  <td>4.94</td>
+                  <td>3.95</td>
+                </tr>
+                <tr>
+                  <td>OmniFlatten 3-stream w/o half-duplex</td>
+                  <td>0.5B</td>
+                  <td>3.89</td>
+                  <td>3.54</td>
+                  <td>5.25</td>
+                  <td>4.76</td>
+                </tr>
+                <tr>
+                  <td>OmniFlatten 3-stream full process</td>
+                  <td>0.5B</td>
+                  <td>4.88</td>
+                  <td>3.92</td>
+                  <td>5.6</td>
+                  <td>5.15</td>
+                </tr>
+                <tr>
+                  <td>OmniFlatten 2-stream full process</td>
+                  <td>0.5B</td>
+                  <td>-</td>
+                  <td>2.19</td>
+                  <td>-</td>
+                  <td>3.06</td>
+                </tr>
+                <tr>
+                  <td>Ground Truth Response</td>
+                  <td>-</td>
+                  <td>7.65</td>
+                  <td>-</td>
+                  <td>6.83</td>
+                  <td>-</td>
                 </tr>
               </tbody>
             </table>
-            <caption>The impact of Modality Alignment and Half-duplex Dialogue Training on full-duplex dialogue
-              capabilities, measured by scores assigned by a competitive LLM QWen-max. The CE loss on the test set is
-              also reported. <i>GT Response</i> denotes the ground truth textual response in the test set.</caption>
           </div>
         </div>
 
@@ -566,33 +666,33 @@
           </div>
           <div class="table-responsive">
             <table class="table table-striped table-bordered">
-              <thead class="table-header">
+              <caption>Assistant Turn-taking and User Turn-taking accuracy at the k-th token (Acc@K) and Response Time.
+              </caption>
+              <thead>
                 <tr>
-                  <th class="text-center align-middle">Chunk Size</th>
-                  <th class="text-center align-middle">Assistant Turn-taking Acc@K<br>1/5/10/25 (%)</th>
-                  <th class="text-center align-middle">Average Assistant Turn-taking<br>Response Time (K/ms)</th>
-                  <th class="text-center align-middle">User Turn-taking Acc @K<br>1/5/10/25 (%)</th>
-                  <th class="text-center align-middle">Average User Turn-taking<br>Response Time (K/ms)</th>
+                  <th>Models</th>
+                  <th class="text-center align-middle">Assistant Turn-taking Acc@K 1/5/10/25 (%)</th>
+                  <th class="text-center align-middle">Average Assistant Turn-taking Response Time (ms)</th>
+                  <th class="text-center align-middle">User Turn-taking Acc @K 1/5/10/25 (%)</th>
+                  <th class="text-center align-middle">Average User Turn-taking Response Time (ms)</th>
                 </tr>
               </thead>
               <tbody class="text-center align-middle">
                 <tr>
-                  <td>5</td>
-                  <td>29.2/59.4/67.4/71.9</td>
-                  <td>3.23/129</td>
-                  <td>2.1/5.7/8.1/17.0</td>
-                  <td>20.55/822</td>
+                  <td>Moshi</td>
+                  <td>2.9/18.8/38.5/55.1</td>
+                  <td>553</td>
+                  <td>0.0/6.2/14.8/45.7</td>
+                  <td>753</td>
                 </tr>
                 <tr>
-                  <td>10</td>
-                  <td>19.8/55.7/71.3/75.5</td>
-                  <td>3.99/160</td>
-                  <td>5.5/13.4/19.8/30.0</td>
-                  <td>20.13/805</td>
+                  <td>OmniFlatten</td>
+                  <td>20.6/53.6/66.3/71.7</td>
+                  <td>193</td>
+                  <td>10.9/30.9/41.8/51.8</td>
+                  <td>287</td>
                 </tr>
               </tbody>
-              <caption>Assistant Turn-taking and User Turn-taking accuracy at the k-th token (Acc@K) and Efficiency (Response
-                Time) with different speech chunk sizes in OmniFlatten.</caption>
             </table>
           </div>
         </div>
